@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       {/* <StartPage /> */}
-      {true ? <GamePage /> : <StartPage />}
+      {false ? <GamePage /> : <StartPage />}
     </div>
   );
 }
