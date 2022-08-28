@@ -1,6 +1,6 @@
 import "./GamePage.css";
 
-const GamePage = () => {
+const GamePage = ({ gameStartState, setGameStartState }) => {
   return (
     <div className="game-page">
       <h2>This is The Game Page</h2>
