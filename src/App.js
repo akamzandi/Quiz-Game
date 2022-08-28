@@ -1,9 +1,10 @@
 import "./App.css";
+import StartMenu from "./Components/StartMenu";
 
 function App() {
   return (
     <div className="App">
-      <h2>Hello World!</h2>
+      <StartMenu />
     </div>
   );
 }
