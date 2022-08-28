@@ -1,6 +1,14 @@
+import { useState, useEffect } from "react";
+
 import "./GamePage.css";
+import data from "../data";
 
 const GamePage = ({ gameStartState, setGameStartState }) => {
+  const [myData, setMyData] = useState(data.results);
+  useEffect(() => {
+    console.log(myData);
+  }, []);
+
   return (
     <div className="game-page">
       <h2>This is The Game Page</h2>
