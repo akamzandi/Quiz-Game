@@ -1,3 +1,25 @@
+.start-page {
+  /* border: 1px solid green; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upper-rigt-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.lower-left-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 .menu-container {
   border: 1px solid red;
   width: 15rem;

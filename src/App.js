@@ -1,10 +1,10 @@
 import "./App.css";
-import StartMenu from "./Components/StartMenu";
+import StartPage from "./Components/StartPage";
 
 function App() {
   return (
     <div className="App">
-      <StartMenu />
+      <StartPage />
     </div>
   );
 }
