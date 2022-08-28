@@ -3,8 +3,8 @@ import "./StartPage.css";
 const StartMenu = () => {
   return (
     <div className="start-page">
-      <h2 className="upper-rigt-img">some LOGO</h2>
-      <h2 className="lower-left-img">some LOGO</h2>
+      <img src={require("../images/blobs.png")} className="upper-rigt-img" />
+      <img src={require("../images/blob 5.png")} className="lower-left-img" />
       <div className="menu-container">
         <h1 className="app-title">Quizzical</h1>
         <p>Some description if needed</p>

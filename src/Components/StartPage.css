@@ -8,20 +8,20 @@
   justify-content: center;
 }
 
-.upper-rigt-img {
+.start-page .upper-rigt-img {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.lower-left-img {
+.start-page .lower-left-img {
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
 .menu-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 15rem;
   height: 15rem;
   display: flex;
