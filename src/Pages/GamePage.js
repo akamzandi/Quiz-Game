@@ -35,7 +35,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
   };
 
   const renderQuizes = () => {
-    if (allQuizes) {
+    if (allQuizes !== null) {
       return allQuizes.map((item, index) => (
         <Quiz
           key={index}
@@ -47,7 +47,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
         />
       ));
     } else {
-      return <p>no data!</p>;
+      return <p>SORRY, THERE IS NO DATA!</p>;
     }
   };
 
@@ -60,17 +60,15 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
       return { ...item, all_answers: all_answers_shuffeled };
     });
     // console.log(procesedData);
-    setAllQuizes(procesedData);
-  }, []);
 
-  useEffect(() => {
-    if (allQuizes) {
-      const initialSelectedStatus = [];
-      for (let i = 0; i < allQuizes.length; i++) {
-        initialSelectedStatus.push({ questionId: i, selectedAnswerId: -1 });
-      }
-      setSelectedAnswersOfQuizes(initialSelectedStatus);
+    const initialSelectedStatus = [];
+    for (let i = 0; i < recievedData.length; i++) {
+      initialSelectedStatus.push({ questionId: i, selectedAnswerId: -1 });
     }
+
+    setSelectedAnswersOfQuizes(initialSelectedStatus);
+
+    setAllQuizes(procesedData);
   }, []);
 
   return (
