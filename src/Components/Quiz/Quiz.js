@@ -8,7 +8,7 @@ const Quiz = ({
   question,
   correct_answer,
   all_answers,
-  handleAnswerOptionClick,
+  handleClickOnAnswerOption,
 }) => {
   const returnShuffeledArray = (array) => {
     let currentArr = array;
@@ -38,7 +38,7 @@ const Quiz = ({
         key={index}
         id={index}
         text={item}
-        handleAnswerOptionClick={handleAnswerOptionClick}
+        handleClickOnAnswerOption={handleClickOnAnswerOption}
       />
     ));
   };
