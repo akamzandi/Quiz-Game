@@ -7,8 +7,10 @@ import Quiz from "../Components/Quiz/Quiz";
 const GamePage = ({ gameStartState, setGameStartState }) => {
   const [allQuizes, setAllQuizes] = useState(data.results);
 
-  const quizComponents = allQuizes.map((item) => (
+  const quizComponents = allQuizes.map((item, index) => (
     <Quiz
+      key={index}
+      id={index}
       question={item.question}
       correct_answer={item.correct_answer}
       all_answers={[item.correct_answer, ...item.incorrect_answers]}
