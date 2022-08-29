@@ -5,10 +5,12 @@ const AnswerOption = ({
   text,
   handleClickOnAnswerOption,
   quizId,
+  isSelected,
 }) => {
   return (
     <div
-      className="answer-option"
+      // className="answer-option"
+      className={isSelected ? "answer-option selected-option" : "answer-option"}
       onClick={() => handleClickOnAnswerOption(quizId, answerId)}
     >
       {text}

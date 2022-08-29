@@ -43,6 +43,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
           question={item.question}
           correct_answer={item.correct_answer}
           all_answers={item.all_answers}
+          selectedAnswerId={selectedAnswersOfQuizes[index]["selectedAnswerId"]}
           handleClickOnAnswerOption={handleClickOnAnswerOption}
         />
       ));
