@@ -2,21 +2,20 @@ import AnswerOption from "../AnswerOption/AnswerOption";
 import "./Quiz.css";
 
 const Quiz = ({ question, correct_answer, all_answers, id }) => {
-  const shuffleArray = (array) => {
-    let currentIndex = array.length,
-      randomIndex;
+  const returnShuffeledArray = (array) => {
+    let currentArr = array;
+    const newArr = [];
 
-    while (currentIndex != 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
+    for (let i = 0; i < array.length; i++) {
+      let randomIndex = Math.floor(Math.random() * currentArr.length);
+      let targetedElement = currentArr.filter(
+        (item, index) => index == randomIndex
+      )[0];
+      newArr.push(targetedElement);
+      currentArr = currentArr.filter((item, index) => index !== randomIndex);
     }
 
-    return array;
+    return newArr;
   };
 
   const renderQuestion = () => {
@@ -24,8 +23,8 @@ const Quiz = ({ question, correct_answer, all_answers, id }) => {
   };
 
   const renderShuffledAnswerOptions = () => {
-    shuffleArray(all_answers);
-    return all_answers.map((item) => <AnswerOption info={item} />);
+    const all_answers_shuffeled = returnShuffeledArray(all_answers);
+    return all_answers_shuffeled.map((item) => <AnswerOption info={item} />);
   };
 
   return (
