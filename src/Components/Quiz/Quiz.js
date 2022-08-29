@@ -1,10 +1,10 @@
 import AnswerOption from "../AnswerOption/AnswerOption";
 import "./Quiz.css";
 
-const Quiz = () => {
+const Quiz = ({ question, correct_answer, incorrect_answers }) => {
   return (
     <div className="quiz-container">
-      <h3 className="quiz-question">How would one say good bye in spanish?</h3>
+      <h3 className="quiz-question">{question}</h3>
       <div className="answers-section">
         <AnswerOption />
         <AnswerOption />
