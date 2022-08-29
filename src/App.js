@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import "./App.css";
-import StartPage from "./Components/StartPage";
-import GamePage from "./Components/GamePage";
+import StartPage from "./Pages/StartPage";
+import GamePage from "./Pages/GamePage";
 
 function App() {
   const [gameStartState, setGameStartState] = useState(true);
