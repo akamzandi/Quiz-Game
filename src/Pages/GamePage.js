@@ -14,7 +14,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
     <div className="game-page">
       <img src={require("../images/blobs.png")} className="upper-rigt-img" />
       <img src={require("../images/blob 5.png")} className="lower-left-img" />
-      <div className="quizes-container">
+      <div className="all-quizes-container">
         <Quiz />
         <Quiz />
         <Quiz />

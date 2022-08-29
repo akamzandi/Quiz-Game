@@ -25,7 +25,7 @@
   left: 0;
 }
 
-.quizes-container {
+.all-quizes-container {
   /* border: 1px solid darkorange; */
   width: 60%;
   display: flex;
@@ -52,10 +52,16 @@
   border-radius: 10px;
   background-color: #4d5b9e;
   color: #f5f7fb;
+  font-size: 0.75rem;
 }
 
 @media screen and (min-width: 850px) {
   .game-page {
     height: 100vh;
+  }
+
+  .all-quizes-container {
+    /* border: 1px solid darkorange; */
+    margin-top: 1.5rem;
   }
 }
