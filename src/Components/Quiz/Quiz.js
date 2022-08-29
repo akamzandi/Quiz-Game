@@ -1,7 +1,15 @@
+import { useState } from "react";
+
 import AnswerOption from "../AnswerOption/AnswerOption";
 import "./Quiz.css";
 
-const Quiz = ({ question, correct_answer, all_answers, id }) => {
+const Quiz = ({
+  id,
+  question,
+  correct_answer,
+  all_answers,
+  handleAnswerOptionClick,
+}) => {
   const returnShuffeledArray = (array) => {
     let currentArr = array;
     const newArr = [];
@@ -24,7 +32,15 @@ const Quiz = ({ question, correct_answer, all_answers, id }) => {
 
   const renderShuffledAnswerOptions = () => {
     const all_answers_shuffeled = returnShuffeledArray(all_answers);
-    return all_answers_shuffeled.map((item) => <AnswerOption info={item} />);
+
+    return all_answers_shuffeled.map((item, index) => (
+      <AnswerOption
+        key={index}
+        id={index}
+        text={item}
+        handleAnswerOptionClick={handleAnswerOptionClick}
+      />
+    ));
   };
 
   return (

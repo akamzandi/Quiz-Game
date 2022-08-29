@@ -1,7 +1,11 @@
 import "./AnswerOption.css";
 
-const AnswerOption = ({ info }) => {
-  return <div className="answer-option">{info}</div>;
+const AnswerOption = ({ id, text, handleAnswerOptionClick }) => {
+  return (
+    <div className="answer-option" onClick={() => handleAnswerOptionClick(id)}>
+      {text}
+    </div>
+  );
 };
 
 export default AnswerOption;
