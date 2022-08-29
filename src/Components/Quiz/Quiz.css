@@ -17,4 +17,6 @@
 .answers-section {
   border: 1px solid blue;
   margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
