@@ -11,7 +11,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
     <Quiz
       question={item.question}
       correct_answer={item.correct_answer}
-      incorrect_answers={item.incorrect_answers}
+      all_answers={[item.correct_answer, ...item.incorrect_answers]}
     />
   ));
 

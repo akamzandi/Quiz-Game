@@ -1,7 +1,7 @@
 import "./AnswerOption.css";
 
-const AnswerOption = () => {
-  return <div className="answer-option">Hi!</div>;
+const AnswerOption = ({ info }) => {
+  return <div className="answer-option">{info}</div>;
 };
 
 export default AnswerOption;
