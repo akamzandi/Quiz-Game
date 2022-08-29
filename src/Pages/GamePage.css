@@ -1,7 +1,8 @@
 .game-page {
   border: 1px solid brown;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +18,7 @@
 }
 
 .game-page .lower-left-img {
-  position: absolute;
+  position: fixed;
   /* border: 1px solid red; */
   width: 4rem;
   bottom: 0;
@@ -25,8 +26,8 @@
 }
 
 .quizes-container {
-  border: 1px solid darkorange;
-  width: 50%;
+  /* border: 1px solid darkorange; */
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +36,7 @@
 
 .control-panel {
   border: 1px solid green;
-  width: 50%;
+  width: 60%;
   height: 4rem;
   display: flex;
   justify-content: center;
