@@ -13,3 +13,8 @@
 .quiz-question {
   color: red;
 }
+
+.answers-section {
+  border: 1px solid blue;
+  margin-top: 1rem;
+}

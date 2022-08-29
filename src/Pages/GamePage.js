@@ -22,7 +22,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
         <Quiz />
       </div>
       <div className="control-panel">
-        <button>Check Answers</button>
+        <button className="check-answers-btn">Check Answers</button>
       </div>
     </div>
   );

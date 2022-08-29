@@ -39,5 +39,14 @@
   height: 4rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 1rem;
+}
+
+.check-answers-btn {
+  width: 7.5rem;
+  height: 2.18rem;
+  border-radius: 10px;
+  background-color: #4d5b9e;
+  color: #f5f7fb;
 }
