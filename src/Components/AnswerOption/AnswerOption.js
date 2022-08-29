@@ -1,10 +1,15 @@
 import "./AnswerOption.css";
 
-const AnswerOption = ({ id, text, handleClickOnAnswerOption }) => {
+const AnswerOption = ({
+  answerId,
+  text,
+  handleClickOnAnswerOption,
+  quizId,
+}) => {
   return (
     <div
       className="answer-option"
-      onClick={() => handleClickOnAnswerOption(id)}
+      onClick={() => handleClickOnAnswerOption(quizId, answerId)}
     >
       {text}
     </div>
