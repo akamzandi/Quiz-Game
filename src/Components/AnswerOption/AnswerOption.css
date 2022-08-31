@@ -3,7 +3,7 @@
 .correct-choice,
 .correct-answer,
 .wrong-choice,
-.neuter-choice {
+.neuter-answer {
   min-width: 4rem;
   height: 1.3rem;
   border-radius: 8px;
@@ -22,9 +22,13 @@
   border: none;
 }
 
-.correct-choice,
-.correct-answer {
+.correct-choice {
   border: none;
+  background-color: #94d7a2;
+}
+
+.correct-answer {
+  border: 1px solid #4d5b9e;
   background-color: #94d7a2;
 }
 
@@ -35,7 +39,7 @@
   opacity: 0.5;
 }
 
-.neuter-choice {
+.neuter-answer {
   border: 1px solid #4d5b9e;
   color: #293264;
   opacity: 0.5;

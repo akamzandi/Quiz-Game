@@ -32,7 +32,7 @@ const AnswerOption = ({
         if (text == correct_answer) {
           return "correct-answer";
         } else {
-          return "neuter-choice";
+          return "neuter-answer";
         }
       }
     }
