@@ -36,14 +36,15 @@
 
 .control-panel {
   /* border: 1px solid green; */
-  width: 90%;
+  width: 70%;
   height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
+  flex-wrap: wrap;
 }
 
 .check-answers-btn {
@@ -65,8 +66,18 @@
 }
 
 .end-msg {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+@media screen and (min-width: 650px) {
+  .control-panel {
+    gap: 1.5rem;
+  }
+  .end-msg {
+    margin-bottom: 0;
+  }
 }
 
 @media screen and (min-width: 850px) {
@@ -77,5 +88,9 @@
   .all-quizes-container {
     /* border: 1px solid darkorange; */
     margin-top: 1.5rem;
+  }
+
+  .end-msg {
+    margin-bottom: 0;
   }
 }
