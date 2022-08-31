@@ -10,6 +10,8 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   const [selectedAnswersOfQuizes, setSelectedAnswersOfQuizes] = useState(null);
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
 
+  console.log(numberOfCorrectAnswers);
+
   const handleClickOnAnswerOption = (qID, aID) => {
     // console.log("quizID: ", qID, ", answerId: ", aID);
 
@@ -26,7 +28,6 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   };
 
   const handleClickOnCheckAnswers = () => {
-    // console.log("check answers clicked!");
     setGameRunningState((prevState) => !prevState);
   };
 
@@ -59,6 +60,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
           all_answers={item.all_answers}
           gameRunningState={gameRunningState}
           selectedAnswerId={selectedAnswersOfQuizes[index]["selectedAnswerId"]}
+          setNumberOfCorrectAnswers={setNumberOfCorrectAnswers}
           handleClickOnAnswerOption={handleClickOnAnswerOption}
         />
       ));
@@ -96,22 +98,26 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
     // getting data from server
     const recievedData = data.results;
 
-    // ranadomize answers order to prevent user from finding out,
+    // ranadomize answers,
     // for example all true answers must not be the first one
     let procesedData = recievedData.map((item) => {
       const all_answers = [item.correct_answer, ...item.incorrect_answers];
       const all_answers_shuffeled = returnShuffeledArray(all_answers);
       return { ...item, all_answers: all_answers_shuffeled };
     });
+    setAllQuizes(procesedData);
 
     const initialSelectedStatus = recievedData.map((item, index) => {
       return { questionId: index, selectedAnswerId: -1 };
     });
-
     setSelectedAnswersOfQuizes(initialSelectedStatus);
 
-    setAllQuizes(procesedData);
+    console.log("useEffect runned");
   }, []);
+
+  // useEffect(() => {
+  //   setNumberOfCorrectAnswers(0);
+  // }, []);
 
   return (
     <div className="game-page">

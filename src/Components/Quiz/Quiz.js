@@ -10,6 +10,7 @@ const Quiz = ({
   all_answers,
   gameRunningState,
   selectedAnswerId,
+  setNumberOfCorrectAnswers,
   handleClickOnAnswerOption,
 }) => {
   const renderQuestion = () => {
@@ -26,6 +27,7 @@ const Quiz = ({
         gameRunningState={gameRunningState}
         isSelected={index == selectedAnswerId ? true : false}
         handleClickOnAnswerOption={handleClickOnAnswerOption}
+        setNumberOfCorrectAnswers={setNumberOfCorrectAnswers}
         quizId={quizId}
       />
     ));

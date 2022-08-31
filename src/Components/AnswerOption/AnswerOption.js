@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./AnswerOption.css";
 
 const AnswerOption = ({
@@ -8,6 +9,7 @@ const AnswerOption = ({
   quizId,
   isSelected,
   correct_answer,
+  setNumberOfCorrectAnswers,
 }) => {
   const getAnswerOptionStatus = () => {
     if (isSelected && text == correct_answer) {
@@ -37,6 +39,13 @@ const AnswerOption = ({
       }
     }
   };
+
+  useEffect(() => {
+    const answerOptionStatus = getAnswerOptionStatus();
+    if (answerOptionStatus == "correct") {
+      setNumberOfCorrectAnswers((prevState) => prevState + 1);
+    }
+  }, [gameRunningState]);
 
   return (
     <div
