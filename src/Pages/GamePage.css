@@ -44,11 +44,21 @@
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+  gap: 1.5rem;
 }
 
 .check-answers-btn {
   width: 7.5rem;
   height: 2.18rem;
+  border-radius: 10px;
+  background-color: #4d5b9e;
+  color: #f5f7fb;
+  font-size: 0.75rem;
+}
+
+.play-again-btn {
+  width: 6.5rem;
+  height: 1.87rem;
   border-radius: 10px;
   background-color: #4d5b9e;
   color: #f5f7fb;

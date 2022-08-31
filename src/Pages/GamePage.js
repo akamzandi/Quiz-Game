@@ -8,6 +8,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   const [gameRunningState, setGameRunningState] = useState(true);
   const [allQuizes, setAllQuizes] = useState(null);
   const [selectedAnswersOfQuizes, setSelectedAnswersOfQuizes] = useState(null);
+  const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
 
   const handleClickOnAnswerOption = (qID, aID) => {
     // console.log("quizID: ", qID, ", answerId: ", aID);
@@ -27,6 +28,10 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   const handleClickOnCheckAnswers = () => {
     // console.log("check answers clicked!");
     setGameRunningState((prevState) => !prevState);
+  };
+
+  const handleClickOnPlayAgain = () => {
+    setShowStartPageState((prevState) => !prevState);
   };
 
   const returnShuffeledArray = (array) => {
@@ -62,6 +67,31 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
     }
   };
 
+  const renderControlPanel = () => {
+    if (gameRunningState) {
+      return (
+        <button
+          className="check-answers-btn"
+          onClick={handleClickOnCheckAnswers}
+        >
+          Check Answers
+        </button>
+      );
+    } else {
+      return (
+        <>
+          <p className="end-msg">
+            You scored {numberOfCorrectAnswers}/{allQuizes.length} correct
+            answers
+          </p>
+          <button className="play-again-btn" onClick={handleClickOnPlayAgain}>
+            Play Again
+          </button>
+        </>
+      );
+    }
+  };
+
   useEffect(() => {
     // getting data from server
     const recievedData = data.results;
@@ -88,14 +118,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
       <img src={require("../images/blobs.png")} className="upper-rigt-img" />
       <img src={require("../images/blob 5.png")} className="lower-left-img" />
       <div className="all-quizes-container">{renderQuizes()}</div>
-      <div className="control-panel">
-        <button
-          className="check-answers-btn"
-          onClick={handleClickOnCheckAnswers}
-        >
-          Check Answers
-        </button>
-      </div>
+      <div className="control-panel">{renderControlPanel()}</div>
     </div>
   );
 };
