@@ -15,18 +15,45 @@
   border: none;
 }
 
+.correct-choice,
 .correct-answer {
+  min-width: 4rem;
+  height: 1.3rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*  */
   border: none;
   background-color: #94d7a2;
 }
 
-.wrong-answer {
+.wrong-choice {
+  min-width: 4rem;
+  height: 1.3rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*  */
   border: none;
   color: #293264;
   background-color: #f8bcbc;
+  opacity: 0.5;
 }
 
-.neuter-answer {
-  border: #4d5b9e;
+.neuter-choice {
+  min-width: 4rem;
+  height: 1.3rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*  */
+  border: 1px solid #4d5b9e;
   color: #293264;
+  opacity: 0.5;
 }
