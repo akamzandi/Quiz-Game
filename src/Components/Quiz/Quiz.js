@@ -8,6 +8,7 @@ const Quiz = ({
   question,
   correct_answer,
   all_answers,
+  gameRunningState,
   selectedAnswerId,
   handleClickOnAnswerOption,
 }) => {
@@ -21,6 +22,8 @@ const Quiz = ({
         key={index}
         answerId={index}
         text={item}
+        correct_answer={correct_answer}
+        gameRunningState={gameRunningState}
         isSelected={index == selectedAnswerId ? true : false}
         handleClickOnAnswerOption={handleClickOnAnswerOption}
         quizId={quizId}

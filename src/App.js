@@ -5,19 +5,19 @@ import StartPage from "./Pages/StartPage";
 import GamePage from "./Pages/GamePage";
 
 function App() {
-  const [gameStartState, setGameStartState] = useState(true);
+  const [showStartPageState, setShowStartPageState] = useState(true);
 
   return (
     <div className="App">
-      {gameStartState ? (
+      {showStartPageState ? (
         <StartPage
-          gameStartState={gameStartState}
-          setGameStartState={setGameStartState}
+          showStartPageState={showStartPageState}
+          setShowStartPageState={setShowStartPageState}
         />
       ) : (
         <GamePage
-          gameStartState={gameStartState}
-          setGameStartState={setGameStartState}
+          showStartPageState={showStartPageState}
+          setShowStartPageState={setShowStartPageState}
         />
       )}
     </div>

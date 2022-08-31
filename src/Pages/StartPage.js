@@ -1,8 +1,8 @@
 import "./StartPage.css";
 
-const StartMenu = ({ gameStartState, setGameStartState }) => {
-  const handleStartClick = () => {
-    setGameStartState((prevState) => !prevState);
+const StartMenu = ({ showStartPageState, setShowStartPageState }) => {
+  const handleClickOnStart = () => {
+    setShowStartPageState((prevState) => !prevState);
   };
 
   return (
@@ -12,7 +12,7 @@ const StartMenu = ({ gameStartState, setGameStartState }) => {
       <div className="menu-container">
         <h1 className="app-title">Quizzical</h1>
         <p>Some description if needed</p>
-        <button className="start-btn" onClick={handleStartClick}>
+        <button className="start-btn" onClick={handleClickOnStart}>
           Start Quiz
         </button>
       </div>

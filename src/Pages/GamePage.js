@@ -4,20 +4,29 @@ import "./GamePage.css";
 import data from "../data";
 import Quiz from "../Components/Quiz/Quiz";
 
-const GamePage = ({ gameStartState, setGameStartState }) => {
+const GamePage = ({ showStartPageState, setShowStartPageState }) => {
+  const [gameRunningState, setGameRunningState] = useState(true);
   const [allQuizes, setAllQuizes] = useState(null);
   const [selectedAnswersOfQuizes, setSelectedAnswersOfQuizes] = useState(null);
 
   const handleClickOnAnswerOption = (qID, aID) => {
     // console.log("quizID: ", qID, ", answerId: ", aID);
-    let newSelectedAnswers = selectedAnswersOfQuizes.map((item) => {
-      if (item.questionId == qID) {
-        return { ...item, selectedAnswerId: aID };
-      } else {
-        return item;
-      }
-    });
-    setSelectedAnswersOfQuizes(newSelectedAnswers);
+
+    if (gameRunningState) {
+      let newSelectedAnswers = selectedAnswersOfQuizes.map((item) => {
+        if (item.questionId == qID) {
+          return { ...item, selectedAnswerId: aID };
+        } else {
+          return item;
+        }
+      });
+      setSelectedAnswersOfQuizes(newSelectedAnswers);
+    }
+  };
+
+  const handleClickOnCheckAnswers = () => {
+    // console.log("check answers clicked!");
+    setGameRunningState((prevState) => !prevState);
   };
 
   const returnShuffeledArray = (array) => {
@@ -43,6 +52,7 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
           question={item.question}
           correct_answer={item.correct_answer}
           all_answers={item.all_answers}
+          gameRunningState={gameRunningState}
           selectedAnswerId={selectedAnswersOfQuizes[index]["selectedAnswerId"]}
           handleClickOnAnswerOption={handleClickOnAnswerOption}
         />
@@ -52,20 +62,21 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
     }
   };
 
-  // for loading the data correctly (answer options order)
   useEffect(() => {
+    // getting data from server
     const recievedData = data.results;
+
+    // ranadomize answers order to prevent user from finding out,
+    // for example all true answers must not be the first one
     let procesedData = recievedData.map((item) => {
       const all_answers = [item.correct_answer, ...item.incorrect_answers];
       const all_answers_shuffeled = returnShuffeledArray(all_answers);
       return { ...item, all_answers: all_answers_shuffeled };
     });
-    // console.log(procesedData);
 
-    const initialSelectedStatus = [];
-    for (let i = 0; i < recievedData.length; i++) {
-      initialSelectedStatus.push({ questionId: i, selectedAnswerId: -1 });
-    }
+    const initialSelectedStatus = recievedData.map((item, index) => {
+      return { questionId: index, selectedAnswerId: -1 };
+    });
 
     setSelectedAnswersOfQuizes(initialSelectedStatus);
 
@@ -78,7 +89,12 @@ const GamePage = ({ gameStartState, setGameStartState }) => {
       <img src={require("../images/blob 5.png")} className="lower-left-img" />
       <div className="all-quizes-container">{renderQuizes()}</div>
       <div className="control-panel">
-        <button className="check-answers-btn">Check Answers</button>
+        <button
+          className="check-answers-btn"
+          onClick={handleClickOnCheckAnswers}
+        >
+          Check Answers
+        </button>
       </div>
     </div>
   );
