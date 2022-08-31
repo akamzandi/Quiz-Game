@@ -21,7 +21,7 @@ const AnswerOption = ({
 
   const renderAnswerOptionsStyle = () => {
     if (gameRunningState) {
-      return isSelected ? "answer-option selected-option" : "answer-option";
+      return isSelected ? "selected-option" : "answer-option";
     } else {
       const answerOptionStatus = getAnswerOptionStatus();
       if (answerOptionStatus == "correct") {
