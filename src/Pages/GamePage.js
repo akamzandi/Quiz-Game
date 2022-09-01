@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 
 import "./GamePage.css";
-import data from "../data";
+// import data from "../data";
 import Quiz from "../Components/Quiz/Quiz";
 
 const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   const [gameRunningState, setGameRunningState] = useState(true);
   const [allQuizes, setAllQuizes] = useState(null);
+  const [dataErrorMsg, setDataErrorMsg] = useState();
+  const [lodaingDataStatus, setLoadingDataStatu] = useState(true);
   const [selectedAnswersOfQuizes, setSelectedAnswersOfQuizes] = useState(null);
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
 
@@ -50,7 +52,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   };
 
   const renderQuizes = () => {
-    if (allQuizes !== null) {
+    if (allQuizes !== null && selectedAnswersOfQuizes !== null) {
       return allQuizes.map((item, index) => (
         <Quiz
           key={index}
@@ -65,20 +67,24 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
         />
       ));
     } else {
-      return <p>SORRY, THERE IS NO DATA!</p>;
+      if (lodaingDataStatus) {
+        return <h2 className="loading-msg">Loading...</h2>;
+      }
     }
   };
 
   const renderControlPanel = () => {
     if (gameRunningState) {
-      return (
-        <button
-          className="check-answers-btn"
-          onClick={handleClickOnCheckAnswers}
-        >
-          Check Answers
-        </button>
-      );
+      if (!lodaingDataStatus) {
+        return (
+          <button
+            className="check-answers-btn"
+            onClick={handleClickOnCheckAnswers}
+          >
+            Check Answers
+          </button>
+        );
+      }
     } else {
       return (
         <>
@@ -87,7 +93,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
             answers
           </p>
           <button className="play-again-btn" onClick={handleClickOnPlayAgain}>
-            Play Again
+            New Game
           </button>
         </>
       );
@@ -95,24 +101,29 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   };
 
   useEffect(() => {
-    // getting data from server
-    const recievedData = data.results;
-
-    // ranadomize answers,
-    // for example all true answers must not be the first one
-    let procesedData = recievedData.map((item) => {
-      const all_answers = [item.correct_answer, ...item.incorrect_answers];
-      const all_answers_shuffeled = returnShuffeledArray(all_answers);
-      return { ...item, all_answers: all_answers_shuffeled };
-    });
-    setAllQuizes(procesedData);
-
-    const initialSelectedStatus = recievedData.map((item, index) => {
-      return { questionId: index, selectedAnswerId: -1 };
-    });
-    setSelectedAnswersOfQuizes(initialSelectedStatus);
-
-    console.log("useEffect runned");
+    // const recievedData = data.results;
+    fetch("https://opentdb.com/api.php?amount=5")
+      .then((response) => response.json())
+      .then((data) => {
+        // getting data from server
+        let recievedData = data.results;
+        console.log(recievedData);
+        // ranadomize answers,
+        // for example all true answers must not be the first one
+        let procesedData = recievedData.map((item) => {
+          const all_answers = [item.correct_answer, ...item.incorrect_answers];
+          const all_answers_shuffeled = returnShuffeledArray(all_answers);
+          return { ...item, all_answers: all_answers_shuffeled };
+        });
+        setAllQuizes(procesedData);
+        setLoadingDataStatu(false);
+        // makking a place to hold the selected value of all questions
+        const initialSelectedStatus = recievedData.map((item, index) => {
+          return { questionId: index, selectedAnswerId: -1 };
+        });
+        setSelectedAnswersOfQuizes(initialSelectedStatus);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   // useEffect(() => {
