@@ -11,7 +11,7 @@ const StartMenu = ({ showStartPageState, setShowStartPageState }) => {
       <img src={require("../images/blob 5.png")} className="lower-left-img" />
       <div className="menu-container">
         <h1 className="app-title">Quizzical</h1>
-        <p>Some description if needed</p>
+        <p className="app-description">Test your general knowledge</p>
         <button className="start-btn" onClick={handleClickOnStart}>
           Start Quiz
         </button>
