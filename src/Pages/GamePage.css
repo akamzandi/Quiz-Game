@@ -35,7 +35,7 @@
 }
 
 .loading-msg {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .control-panel {
@@ -74,23 +74,27 @@
   /* margin-bottom: 0.75rem; */
 }
 
-@media screen and (min-width: 650px) {
+/* @media screen and (min-width: 650px) {
   .control-panel {
-    /* gap: 1.5rem; */
+    gap: 1.5rem;
   }
   .end-msg {
-    /* margin-bottom: 0; */
+    margin-bottom: 0;
   }
-}
+} */
 
 @media screen and (min-width: 850px) {
-  .game-page {
-    /* height: 100vh; */
-  }
+  /* .game-page {
+    height: 100vh;
+  } */
 
   .all-quizes-container {
     /* border: 1px solid darkorange; */
     margin-top: 1.5rem;
+  }
+
+  .loading-msg {
+    font-size: 2rem;
   }
 
   .control-panel {
