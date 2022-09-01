@@ -30,4 +30,18 @@
   .quiz-container {
     align-items: flex-start;
   }
+
+  .quiz-question {
+    /* color: red; */
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  .answers-section {
+    /* border: 1px solid greenyellow; */
+    margin-top: 1.2rem;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
 }
