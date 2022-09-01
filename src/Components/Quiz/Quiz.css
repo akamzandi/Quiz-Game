@@ -33,15 +33,17 @@
 
   .quiz-question {
     /* color: red; */
-    font-size: 1.2rem;
-    margin-top: 1.2rem;
-    line-height: 1.6rem;
+    font-size: 1.4rem;
+    margin-top: 1.4rem;
+    line-height: 2rem;
+    word-break: break-all;
+    /* word-wrap: break-word; */
   }
 
   .answers-section {
     /* border: 1px solid greenyellow; */
-    margin-top: 1.2rem;
+    margin-top: 1.4rem;
     gap: 1.5rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.8rem;
   }
 }

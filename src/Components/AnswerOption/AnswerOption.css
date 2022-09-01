@@ -45,3 +45,16 @@
   color: #293264;
   opacity: 0.5;
 }
+
+@media screen and (min-width: 850px) {
+  .answer-option,
+  .selected-option,
+  .correct-choice,
+  .correct-answer,
+  .wrong-choice,
+  .neuter-answer {
+    /* height: 1.6rem; */
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+  }
+}
