@@ -93,7 +93,20 @@
     margin-top: 1.5rem;
   }
 
+  .check-answers-btn {
+    font-size: 0.85rem;
+    width: 7.8rem;
+    height: 2.5rem;
+  }
+
+  .play-again-btn {
+    font-size: 0.85rem;
+    width: 7.3rem;
+    height: 2.2rem;
+  }
+
   .end-msg {
     margin-bottom: 0;
+    font-size: 1.2rem;
   }
 }
