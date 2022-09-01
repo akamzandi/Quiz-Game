@@ -6,6 +6,7 @@
 .neuter-answer {
   min-width: 4rem;
   height: 1.3rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 8px;
   font-size: 0.75rem;
   display: flex;
