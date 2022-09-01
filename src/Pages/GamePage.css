@@ -17,7 +17,7 @@
 }
 
 .game-page .lower-left-img {
-  position: fixed;
+  position: absolute;
   /* border: 1px solid red; */
   width: 4rem;
   bottom: 0;
