@@ -5,13 +5,16 @@
 .wrong-choice,
 .neuter-answer {
   min-width: 4rem;
-  height: 1.3rem;
+  max-width: 100%;
+  min-height: 1.3rem;
   padding: 0.3rem 0.6rem;
   border-radius: 8px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  word-break: break-all;
 }
 
 .answer-option {
@@ -55,6 +58,6 @@
   .neuter-answer {
     /* height: 1.6rem; */
     padding: 0.5rem 0.75rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
