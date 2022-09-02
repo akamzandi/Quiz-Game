@@ -34,6 +34,14 @@
   margin-top: 1.5rem;
 }
 
+.loading-panel {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 .loading-msg {
   font-size: 1.5rem;
 }

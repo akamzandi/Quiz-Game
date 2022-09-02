@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import { PulseLoader } from "react-spinners";
 
 import "./GamePage.css";
-// import data from "../data";
 import Quiz from "../Components/Quiz/Quiz";
 
 const GamePage = ({ showStartPageState, setShowStartPageState }) => {
@@ -68,7 +68,12 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
       ));
     } else {
       if (lodaingDataStatus) {
-        return <h2 className="loading-msg">Loading...</h2>;
+        return (
+          <div className="loading-panel">
+            <h2 className="loading-msg">Loading</h2>
+            <PulseLoader color="#293264" size={9} />
+          </div>
+        );
       }
     }
   };
@@ -101,7 +106,6 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   };
 
   useEffect(() => {
-    // const recievedData = data.results;
     fetch("https://opentdb.com/api.php?amount=5")
       .then((response) => response.json())
       .then((data) => {
