@@ -12,11 +12,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   const [selectedAnswersOfQuizes, setSelectedAnswersOfQuizes] = useState(null);
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
 
-  console.log(numberOfCorrectAnswers);
-
   const handleClickOnAnswerOption = (qID, aID) => {
-    // console.log("quizID: ", qID, ", answerId: ", aID);
-
     if (gameRunningState) {
       let newSelectedAnswers = selectedAnswersOfQuizes.map((item) => {
         if (item.questionId == qID) {
@@ -34,7 +30,11 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   };
 
   const handleClickOnPlayAgain = () => {
-    setShowStartPageState((prevState) => !prevState);
+    setAllQuizes(null);
+    setNumberOfCorrectAnswers(0);
+    setGameRunningState(true);
+    setLoadingDataStatus(true);
+    startNewGame();
   };
 
   const returnShuffeledArray = (array) => {
@@ -49,6 +49,30 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
       currentArr = currentArr.filter((item, index) => index !== randomIndex);
     }
     return newArr;
+  };
+
+  const startNewGame = () => {
+    fetch("https://opentdb.com/api.php?amount=5")
+      .then((response) => response.json())
+      .then((data) => {
+        // getting data from server
+        let recievedData = data.results;
+        // ranadomize answers,
+        // for example all true answers must not be the first one
+        let procesedData = recievedData.map((item) => {
+          const all_answers = [item.correct_answer, ...item.incorrect_answers];
+          const all_answers_shuffeled = returnShuffeledArray(all_answers);
+          return { ...item, all_answers: all_answers_shuffeled };
+        });
+        setAllQuizes(procesedData);
+        setLoadingDataStatus(false);
+        // makking a place to hold the selected value of all questions
+        const initialSelectedStatus = recievedData.map((item, index) => {
+          return { questionId: index, selectedAnswerId: -1 };
+        });
+        setSelectedAnswersOfQuizes(initialSelectedStatus);
+      })
+      .catch((error) => console.log(error));
   };
 
   const renderQuizes = () => {
@@ -106,33 +130,8 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   };
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5")
-      .then((response) => response.json())
-      .then((data) => {
-        // getting data from server
-        let recievedData = data.results;
-        console.log(recievedData);
-        // ranadomize answers,
-        // for example all true answers must not be the first one
-        let procesedData = recievedData.map((item) => {
-          const all_answers = [item.correct_answer, ...item.incorrect_answers];
-          const all_answers_shuffeled = returnShuffeledArray(all_answers);
-          return { ...item, all_answers: all_answers_shuffeled };
-        });
-        setAllQuizes(procesedData);
-        setLoadingDataStatus(false);
-        // makking a place to hold the selected value of all questions
-        const initialSelectedStatus = recievedData.map((item, index) => {
-          return { questionId: index, selectedAnswerId: -1 };
-        });
-        setSelectedAnswersOfQuizes(initialSelectedStatus);
-      })
-      .catch((error) => console.log(error));
+    startNewGame();
   }, []);
-
-  // useEffect(() => {
-  //   setNumberOfCorrectAnswers(0);
-  // }, []);
 
   return (
     <div className="game-page">

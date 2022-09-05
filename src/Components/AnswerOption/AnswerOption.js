@@ -41,9 +41,11 @@ const AnswerOption = ({
   };
 
   useEffect(() => {
-    const answerOptionStatus = getAnswerOptionStatus();
-    if (answerOptionStatus == "correct") {
-      setNumberOfCorrectAnswers((prevState) => prevState + 1);
+    if (!gameRunningState) {
+      const answerOptionStatus = getAnswerOptionStatus();
+      if (answerOptionStatus == "correct") {
+        setNumberOfCorrectAnswers((prevState) => prevState + 1);
+      }
     }
   }, [gameRunningState]);
 
