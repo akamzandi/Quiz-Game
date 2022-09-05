@@ -8,7 +8,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
   const [gameRunningState, setGameRunningState] = useState(true);
   const [allQuizes, setAllQuizes] = useState(null);
   const [dataErrorMsg, setDataErrorMsg] = useState();
-  const [lodaingDataStatus, setLoadingDataStatu] = useState(true);
+  const [lodaingDataStatus, setLoadingDataStatus] = useState(true);
   const [selectedAnswersOfQuizes, setSelectedAnswersOfQuizes] = useState(null);
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
 
@@ -120,7 +120,7 @@ const GamePage = ({ showStartPageState, setShowStartPageState }) => {
           return { ...item, all_answers: all_answers_shuffeled };
         });
         setAllQuizes(procesedData);
-        setLoadingDataStatu(false);
+        setLoadingDataStatus(false);
         // makking a place to hold the selected value of all questions
         const initialSelectedStatus = recievedData.map((item, index) => {
           return { questionId: index, selectedAnswerId: -1 };
